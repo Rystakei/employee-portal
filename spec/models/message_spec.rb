@@ -45,7 +45,13 @@ describe Message do
   context 'when the message body is empty' do 
     let(:message) { Message.new(body: nil) }
     it 'should raise an error' do
-      expect { message.body.empty? }.to raise_error 
+      expect { message.deliver! }.to raise_error 
+      
+      # We changed below to message.deliver! as seen above
+      # expect { message.body.empty? }.to raise_error 
+
+      # another way to do it. In this case StandardError is created by us similarly to ArgumentError
+      # expect { Message.new(body: nil).deliver! }.to raise_error StandardError
     end
   end
     
