@@ -43,7 +43,7 @@ describe Message do
     end
 
   context 'when the message body is empty' do 
-    let(:message) { Message.new(body: nil) }
+    let(:message) { Message.new }
     it 'should raise an error' do
       #another way to improve this is to remove the variable from let(:message) since were not using this statement. Then we can do something like expect {Message.new(body: nil).deliver!}
       expect { message.deliver! }.to raise_error 
